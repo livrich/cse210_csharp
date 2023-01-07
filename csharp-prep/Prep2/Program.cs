@@ -6,7 +6,8 @@ class Program
     {
         Console.Write("What is your grade percentage? ");
         string gradePercent = Console.ReadLine();
-        float percent = Single.Parse(gradePercent);
+        double doublePercent = Math.Round(Single.Parse(gradePercent));
+        int percent = Convert.ToInt32(doublePercent);
 
         string letter = "F";
         
@@ -33,7 +34,19 @@ class Program
             }
         } while (false);
 
-        Console.WriteLine($"Your letter grade is: {letter}");
+        int remainder = percent % 10;
+        string sign = "";
+
+        if (remainder >= 7 && letter != "A" && letter != "F")
+        {
+            sign = "+";
+        }
+        else if (remainder < 3 && letter != "F")
+        {
+            sign = "-";
+        }
+
+        Console.WriteLine($"Your letter grade is: {letter}{sign}");
 
         if (percent >= 70)
         {
