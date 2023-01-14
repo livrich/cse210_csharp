@@ -8,22 +8,27 @@ class Program
         string answerString = Console.ReadLine();
         int answer = Int32.Parse(answerString);
 
-        Console.Write("Enter guess: ");
-        string guessString = Console.ReadLine();
-        int guess = Int32.Parse(guessString);
+        bool state = false;
+        while (state == false)
+        {
+            Console.Write("Enter guess: ");
+            string guessString = Console.ReadLine();
+            int guess = Int32.Parse(guessString);
 
-        if (guess == answer)
-        {
-            Console.WriteLine("You guessed the magic number!");
+            if (guess == answer)
+            {
+                Console.WriteLine("You guessed the magic number!");
+                state = true;
+            }
+            else if (guess > answer)
+            {
+                Console.WriteLine("Lower");
+            }
+            else
+            {
+                Console.WriteLine("Higher");
+            }
         }
-        else if (guess > answer)
-        {
-            Console.WriteLine("Lower");
-        }
-        else
-        {
-            Console.WriteLine("Higher");
-        }
-
+        
     }
 }
