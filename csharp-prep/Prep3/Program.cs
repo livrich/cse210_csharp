@@ -13,6 +13,9 @@ class Program
             // string answerString = Console.ReadLine();
             // int answer = Int32.Parse(answerString);
 
+            // Also convert to int this way:
+            // int magicNum = int.Parse(Console.ReadLine());
+
             // Generate random number between 1 and 100.
             // This is the number user tries to guess.
             Random randomGenerator = new Random();
@@ -27,8 +30,7 @@ class Program
             {
                 // Get user guess, convert to integer, increase guess counter.
                 Console.Write("Enter guess: ");
-                string guessString = Console.ReadLine();
-                int guess = Int32.Parse(guessString);
+                int guess = int.Parse(Console.ReadLine());
                 numGuesses += 1;
 
                 // Determine if user guessed the number, or needs to guess
