@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -11,23 +12,19 @@ class Program
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
         
         // Loop to keep getting numbers for list until 0 is entered.
-        bool getNumber = true;
-        while (getNumber == true)
+        int userNumber = 1;
+        while (userNumber != 0)
         {
             // Get number from user.
             Console.Write("Enter number: ");
+            string userInput = Console.ReadLine();
             // Convert input into int.
-            int number = int.Parse(Console.ReadLine());
+            userNumber = int.Parse(userInput);
 
-            // Exit loop, don't add 0 to list.
-            if (number == 0)
+            // Only add number to list if not 0.
+            if (userNumber != 0)
             {
-                getNumber = false;
-            }
-            // Add number to list.
-            else
-            {
-                numbers.Add(number);
+                numbers.Add(userNumber);
             }
         }
 
