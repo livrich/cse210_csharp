@@ -1,5 +1,6 @@
-Prompt one place holder.
-Prompt two goes here.
-This will be prompt three.
-Fourth prompt.
-Fifth prompt.
+// Gratitude/Optimism Prompts
+What about today made you smile?
+What is something great about your community?
+Write about something good that happened to you today.
+Write about a positive interaction you had with someone today.
+What positive impact did you have today on yourself or someone else?
