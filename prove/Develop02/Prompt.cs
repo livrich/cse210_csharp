@@ -12,6 +12,7 @@ public class Prompt
         string file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\prompts.txt";
         // Read text file line by line into list.
         List<string> lines = File.ReadAllLines(file).ToList();
+        lines = lines.Skip(1).ToList();
         return lines;
     }
 
@@ -26,9 +27,11 @@ public class Prompt
         Random rnd = new Random();
         // Min value is included, max value is not.
         int number = rnd.Next(0, 5);
+        // Console.WriteLine(number);
         
         // Get specified prompt by index value.
         string prompt = promptsList[number];
+        // Console.WriteLine(prompt);
         return prompt;
     }
 }
