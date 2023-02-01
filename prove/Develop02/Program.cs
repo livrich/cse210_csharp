@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        List<string> allEntries = new List<string>();
+
         Console.WriteLine("Welcome to the Journal Program!");
 
         string choice;
@@ -12,13 +14,22 @@ class Program
             choice = DisplayMenu();
             if (choice == "1")
             {
-                Console.WriteLine("Write stuff");
-                Prompt myPrompt = new Prompt();
-                myPrompt.GeneratePrompt();
+                Console.WriteLine();
+                Entry myPrompt = new Entry();
+                myPrompt.DisplayDate();
+                myPrompt.DisplayPrompt();
+                myPrompt.GetWrittenResponse();
+                AddToList(allEntries, myPrompt._date);
+                AddToList(allEntries, myPrompt._prompt);
+                AddToList(allEntries, myPrompt._entry);
             }
             else if (choice == "2")
             {
-                Console.WriteLine("Display stuff");
+                Console.WriteLine();
+                foreach (string item in allEntries)
+                {
+                    Console.WriteLine(item);
+                }
             }
             else if (choice == "3")
             {
@@ -45,5 +56,10 @@ class Program
         Console.WriteLine("5. Quit");
         Console.Write("What would you like to do? ");
         return Console.ReadLine();
+    }
+
+    static void AddToList(List<string> list, string item)
+    {
+        list.Add(item);
     }
 }
