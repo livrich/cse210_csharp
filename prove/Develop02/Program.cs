@@ -15,20 +15,26 @@ class Program
             if (choice == "1")
             {
                 Console.WriteLine();
-                Entry myPrompt = new Entry();
-                myPrompt.DisplayDate();
-                myPrompt.DisplayPrompt();
-                myPrompt.GetWrittenResponse();
-                AddToList(allEntries, myPrompt._date);
-                AddToList(allEntries, myPrompt._prompt);
-                AddToList(allEntries, myPrompt._entry);
+                Entry myEntry = new Entry();
+                myEntry.DisplayDate();
+                myEntry.DisplayPrompt();
+                myEntry.GetWrittenResponse();
+                AddToList(allEntries, myEntry._date);
+                AddToList(allEntries, myEntry._prompt);
+                AddToList(allEntries, myEntry._entry);
             }
             else if (choice == "2")
             {
                 Console.WriteLine();
+                int count = 0;
                 foreach (string item in allEntries)
                 {
                     Console.WriteLine(item);
+                    count += 1;
+                    if (count % 3 == 0)
+                    {
+                        Console.WriteLine();
+                    }
                 }
             }
             else if (choice == "3")
