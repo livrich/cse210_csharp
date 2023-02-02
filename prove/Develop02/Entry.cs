@@ -4,9 +4,11 @@ public class Entry
 {
     // Initialize attributes for this class.
     public string _prompt;
-    public string _date;
+    public string _date = DateTime.Today.ToString("D");
     public string _entry;
     
+
+    /* Don't need this method anymore.
 
     // Method that displays today's date to screen.
     public void DisplayDate()
@@ -16,6 +18,7 @@ public class Entry
         _date = DateTime.Today.ToString("D");
         Console.WriteLine($"Date: {_date}");
     }
+    */
     
     // Method that calls Prompt class to get a random
     // prompt and display the prompt on screen.
