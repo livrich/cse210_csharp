@@ -2,26 +2,70 @@ using System;
 
 public class Prompt
 {
-    // There are no attributes for this class.
+    // Class attributes.
+    // Type of prompt user wants.
+    string _type;
+    // Path of file for correct prompts.
+    string _file;
 
-    // Method to read designated file and return list of strings.
-    public List<string> ReadFile()
+     // Method to ask user what kind of journal prompt they want.
+     // Returns number as string.
+     public string PickPromptType()
     {
-        // Designated file where journal prompts are stored.
-        // Need to have full file path.
-        string file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\prompts.txt";
+        Console.WriteLine("What kind of prompt would you like?");
+        Console.WriteLine("1. Gratitude/Optimism");
+        Console.WriteLine("2. Personal History");
+        Console.WriteLine("3. Therapy");
+        Console.Write("Enter number: ");
+        string type = Console.ReadLine();
+        return type;
+    }
+    
+    // Method to read designated file and return list of strings.
+    public List<string> ReadFile(string fileName)
+    {
         // Read text file line by line into list.
-        List<string> lines = File.ReadAllLines(file).ToList();
+        List<string> lines = File.ReadAllLines(fileName).ToList();
         lines = lines.Skip(1).ToList();
         return lines;
     }
-
+   
     // Method to randomly generate and return a string prompt.
     // Calls on ReadFile() method above to get list of prompts.
     public string GeneratePrompt()
     {
+        do
+        {
+            // Determine what kind of prompt user wants.
+            _type = PickPromptType();
+            
+            if (_type == "1")
+            {
+                // Gratitude/Optimism Prompts.
+                // Need to have full file path.
+                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\GOprompts.txt";
+            }
+            else if (_type == "2")
+            {
+                // Personal History Prompts.
+                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\PHprompts.txt";
+            }
+            else if (_type == "3")
+            {
+                // Therapy Prompts.
+                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\Tprompts.txt";
+            }
+            else
+            {
+                // Display error message and continue loop so user
+                // can enter valid input.
+                Console.WriteLine("Error: invalid response");
+                continue;
+            } 
+        } while (_type != "1" && _type != "2" && _type != "3");
+        
         // Get list of prompts by reading file with prompts.
-        List<string> promptsList = ReadFile();
+        List<string> promptsList = ReadFile(_file);
         
         // Get random number with Random class.
         Random rnd = new Random();
