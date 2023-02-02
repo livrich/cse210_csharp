@@ -34,7 +34,6 @@ class Program
                 // Initialize instance of Entry class.
                 Entry myEntry = new Entry();
                 // Call methods to display text and get user input.
-                myEntry.DisplayDate();
                 myEntry.DisplayPrompt();
                 myEntry.GetWrittenResponse();
                 // Call function to store data in allEntries list.
