@@ -42,18 +42,19 @@ public class Prompt
             if (_type == "1")
             {
                 // Gratitude/Optimism Prompts.
-                // Need to have full file path.
-                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\GOprompts.txt";
+                // Learned I should have relative path names.
+                // Otherwise code will only work on my computer.
+                _file = "GOprompts.txt";
             }
             else if (_type == "2")
             {
                 // Personal History Prompts.
-                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\PHprompts.txt";
+                _file = "PHprompts.txt";
             }
             else if (_type == "3")
             {
                 // Therapy Prompts.
-                _file = @"C:\Users\olivi\OneDrive\Documents\Programming\CSE_210\cse210_csharp\prove\Develop02\Tprompts.txt";
+                _file = "Tprompts.txt";
             }
             else
             {
