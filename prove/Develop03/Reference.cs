@@ -6,15 +6,36 @@ class Reference {
     private string _verse;
     private string _secondVerse;
 
-    public void GetBook(){
-
+    // Constructor to set value of book, chapter, and verse.
+    public Reference(string book, string chapter, string verse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _secondVerse = "";
     }
 
-    public void GetChapter(){
-
+    // Constructor to set value of book, chapter, verse, and second verse.
+    public Reference(string book, string chapter, string verse, string secondVerse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _secondVerse = secondVerse;
     }
-
-    public void GetVerse(){
-        
+    
+    // Method to format reference based on number of verses.
+    public string FormatReference()
+    {
+        if (_secondVerse == "")
+        {
+            string singleVerse = $"{_book} {_chapter}:{_verse}";
+            return singleVerse;
+        }
+        else 
+        {
+            string doubleVerse = $"{_book} {_chapter}:{_verse}-{_secondVerse}";
+            return doubleVerse;
+        }
     }
 }
