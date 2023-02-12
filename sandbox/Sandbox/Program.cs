@@ -6,14 +6,19 @@ class Program
     {
         Console.WriteLine("Hello Sandbox World!");
 
-        // This will start by displaying "AAA" and waiting for the user to press the enter key
-        Console.WriteLine("AAA");
-        Console.ReadLine();
-
-        // This will clear the console
-        Console.Clear();
-
-        // This will show "BBB" in the console where "AAA" used to be
-        Console.WriteLine("BBB");
+        string str = "Olivia";
+        foreach (char character in str){
+            string c = character.ToString();
+            if (c == "_")
+            {
+                continue;
+            }
+            else 
+            {
+                str = str.Replace(c, "_");
+                Console.WriteLine(str);
+            }
+        }
+        
     }
 }
