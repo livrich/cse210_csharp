@@ -10,5 +10,9 @@ class Program
         MathAssignment math1 = new MathAssignment("Jenny", "Calc", "4.2", "12-20");
         Console.WriteLine(math1.GetSummary());
         Console.WriteLine(math1.GetHomeworkList());
+
+        WritingAssignment write1 = new WritingAssignment("Lex", "English 101", "Thoughts on Book");
+        Console.WriteLine(write1.GetSummary());
+        Console.WriteLine(write1.GetWritingInformation());
     }
 }
