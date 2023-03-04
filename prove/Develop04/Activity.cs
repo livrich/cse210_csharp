@@ -1,9 +1,11 @@
 using System;
 
-public class Activity {
+public class Activity 
+{
     // Attributes
     private string _activityType;
     private string _welcomeMessage;
+    private string _readyMessage;
     private string _durationMessage;
     protected int _duration;
     private string _wellDoneMessage;
@@ -14,6 +16,7 @@ public class Activity {
     {
         _activityType = type;
         _welcomeMessage = $"Welcome to the {_activityType} Activity.";
+        _readyMessage = "\nGet ready";
         _durationMessage = "\nHow long, in seconds, would you like for your session? ";
         _wellDoneMessage = "\nWell done!!";
         // If I initialize here, _duration will always be initial value of zero.
@@ -24,6 +27,11 @@ public class Activity {
     protected void DisplayWelcome()
     {
         Console.WriteLine(_welcomeMessage);
+    }
+
+    protected void DisplayReady()
+    {
+        Console.Write(_readyMessage);
     }
 
     protected void DisplayWellDone()
