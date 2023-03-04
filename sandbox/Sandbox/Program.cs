@@ -6,19 +6,15 @@ class Program
     {
         Console.WriteLine("Hello Sandbox World!");
 
-        string str = "Olivia";
-        foreach (char character in str){
-            string c = character.ToString();
-            if (c == "_")
-            {
-                continue;
-            }
-            else 
-            {
-                str = str.Replace(c, "_");
-                Console.WriteLine(str);
-            }
-        }
+        // while (true)
+        // {
+        Console.Write("+");
+
+        Thread.Sleep(1000);
+
+        Console.Write("\b \b"); // Erase the + character
+        Console.Write("-"); // Replace it with the - character
+        // }
         
     }
 }
