@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // bool run = true;
         while (true)
         {
             DisplayMenu();
@@ -15,7 +14,8 @@ class Program
                 BreathingActivity a1 = new BreathingActivity("Breathing");
                 a1.RunActivity();
             } else if (choice == "2") {
-                Console.WriteLine("Reflect");
+                ReflectActivity r1 = new ReflectActivity("Reflecting");
+                r1.RunActivity();
             } else if (choice == "3") {
                 Console.WriteLine("List");
             } else if (choice == "4") {
@@ -25,7 +25,6 @@ class Program
             }
         }
         
-
         void DisplayMenu()
         {
             Console.WriteLine("\nMenu:");
