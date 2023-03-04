@@ -1,9 +1,9 @@
 using System;
 
-class BreathingActivity : Activity {
+class BreathingActivity : Activity 
+{
     // Attributes
     private string _introMessage;
-    private string _readyMessage;
     private string _inMessage;
     private string _outMessage;
 
@@ -12,7 +12,6 @@ class BreathingActivity : Activity {
     {
         _introMessage = "\nThis activity will help you relax by walking you through breathing in and \n" +
             "out slowly. Clear your mind and focus on your breathing.";
-        _readyMessage = "Get ready";
         _inMessage = "Breathe in...";
         _outMessage = "Breathe out...";
     }
@@ -21,11 +20,6 @@ class BreathingActivity : Activity {
     private void DisplayIntro()
     {
         Console.WriteLine(_introMessage);
-    }
-
-    private void DisplayReady()
-    {
-        Console.Write(_readyMessage);
     }
 
     private void DisplayIn()
