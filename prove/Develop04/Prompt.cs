@@ -28,10 +28,13 @@ public class Prompt
         // Get list of prompts by reading file with prompts.
         List<string> promptsList = ReadFile(_file);
         
+        // Determine max range.
+        int max = promptsList.Count();
+        
         // Get random number with Random class.
         Random rnd = new Random();
         // Min value is included, max value is not.
-        int number = rnd.Next(0, 5);
+        int number = rnd.Next(0, max);
         // Console.WriteLine(number);
         
         // Get specified prompt by index value.
