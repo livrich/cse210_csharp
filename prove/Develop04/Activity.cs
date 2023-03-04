@@ -34,7 +34,8 @@ public class Activity {
     protected void DisplayFinish()
     {
         // If I initialize finish message sooner, _duration doesn't update or causes errors.
-        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_activityType} Activity.");
+        _finishMessage = $"\nYou have completed another {_duration} seconds of the {_activityType} Activity.";
+        Console.WriteLine(_finishMessage);
     }
 
     // This method still works if I return void.
