@@ -4,43 +4,97 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
-
         List<string> goalsList = new List<string>();
         LoadFile();
 
         while (true)
         {
-            DisplayMenu();
+            DisplayMainMenu();
             Console.Write("Select a choice: ");
             string choice = Console.ReadLine();
 
-            if (choice == "1"){
-                Console.WriteLine("Create New Goal");
-            } else if (choice == "2"){
+            // Create new goal
+            if (choice == "1")
+            {
+                while (true)
+                {
+                    DisplayGoalMenu();
+                    Console.Write("Select goal type (by number): ");
+                    string goalType = Console.ReadLine();
+
+                    // Create simple goal
+                    if (goalType == "1") 
+                    {
+                        Console.WriteLine("Simple");
+                        // Ask questions about goal
+                        // Make goal
+                        // Add goal to list
+                        break;
+                    } 
+                    // Create eternal goal
+                    else if (goalType == "2") 
+                    {
+                        Console.WriteLine("Eternal");
+                        break;
+                    } 
+                    // Create checklist goal
+                    else if (goalType == "3") 
+                    {
+                        Console.WriteLine("Checklist");
+                        break;
+                    } 
+                    // Invalid input error message
+                    else 
+                    {
+                        Console.WriteLine("That was not a valid option.");
+                    }
+                }
+            } 
+            // Display list of goals
+            else if (choice == "2")
+            {
                 Console.WriteLine("List Goals");
-            } else if (choice == "3"){
+            } 
+            // Record progress/completion of goal
+            else if (choice == "3")
+            {
+                Console.WriteLine("Record");
+            } 
+            // Save file
+            else if (choice == "4")
+            {
                 SaveFile("goals.txt", goalsList);
                 Console.WriteLine("File saved successfully.");
-            } else if (choice == "4"){
-                Console.WriteLine("Record");
-            } else if (choice == "5"){
+            } 
+            // Exit program
+            else if (choice == "5")
+            {
                 System.Environment.Exit(0);
-            } else {
+            } 
+            // Invalid input error message
+            else 
+            {
                 Console.WriteLine("That was not a valid option.");
             }
         }
         
 
-        void DisplayMenu()
+        void DisplayMainMenu()
         {
-            Console.WriteLine("\nMenu:");
-            Console.WriteLine("1. Create New Goal");
-            Console.WriteLine("2. List Goals");
-            Console.WriteLine("3. Save Goals");
-            // Console.WriteLine("4. Load Goals");
-            Console.WriteLine("4. Record Event");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("\nMain Menu:");
+            Console.WriteLine("  1. Create New Goal");
+            Console.WriteLine("  2. List Goals");
+            Console.WriteLine("  3. Record Event");
+            Console.WriteLine("  4. Save Goals");
+            Console.WriteLine("  5. Quit");
+        }
+
+        void DisplayGoalMenu()
+        {
+            Console.WriteLine("The types of Goals are:");
+            Console.WriteLine("  1. Simple Goal");
+            Console.WriteLine("  2. Eternal Goal");
+            Console.WriteLine("  3. Checklist Goal");
         }
 
         // Function to add items to a list.
