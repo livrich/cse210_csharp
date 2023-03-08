@@ -1,1 +1,6 @@
-0
+SimpleGoal:test 2,work work,20,False
+SimpleGoal:test 1,work,10,False
+SimpleGoal:test 2,work work,20,False
+SimpleGoal:test 5,55555,50,False
+EternalGoal:Eat food,eat three meals a day,30
+SimpleGoal:Read books,read a book a week,100,500,0,5
