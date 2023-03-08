@@ -7,6 +7,12 @@ class Program
         List<string> goalsList = new List<string>();
         LoadFile();
 
+        string name;
+        string description;
+        int points;
+        int repetitions = 0;
+        int bonusPoints = 0;
+
         while (true)
         {
             DisplayMainMenu();
@@ -25,22 +31,37 @@ class Program
                     // Create simple goal
                     if (goalType == "1") 
                     {
-                        Console.WriteLine("Simple");
                         // Ask questions about goal
+                        AskQuestions(false);
                         // Make goal
-                        // Add goal to list
+                        SimpleGoal g1 = new SimpleGoal(name, description, points);
+                        // Add goal to list. Need string representation.
+                        string stringLine = $"SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
+                        AddToList(goalsList, stringLine);
                         break;
                     } 
                     // Create eternal goal
                     else if (goalType == "2") 
                     {
-                        Console.WriteLine("Eternal");
+                        // Ask questions about goal
+                        AskQuestions(false);
+                        // Make goal
+                        EternalGaol g2 = new EternalGaol(name, description, points);
+                        // Add goal to list. Need string representation.
+                        string stringLine = $"EternalGoal:{name},{description},{points}";
+                        AddToList(goalsList, stringLine);
                         break;
                     } 
                     // Create checklist goal
                     else if (goalType == "3") 
                     {
-                        Console.WriteLine("Checklist");
+                        // Ask questions about goal
+                        AskQuestions(true);
+                        // Make goal
+                        ChecklistGoal g3 = new ChecklistGoal(name, description, points, bonusPoints, repetitions);
+                        // Add goal to list. Need string representation.
+                        string stringLine = $"SimpleGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
+                        AddToList(goalsList, stringLine);
                         break;
                     } 
                     // Invalid input error message
@@ -54,6 +75,10 @@ class Program
             else if (choice == "2")
             {
                 Console.WriteLine("List Goals");
+                foreach (string line in goalsList)
+                {
+                    
+                }
             } 
             // Record progress/completion of goal
             else if (choice == "3")
@@ -97,6 +122,36 @@ class Program
             Console.WriteLine("  3. Checklist Goal");
         }
 
+        void AskQuestions(bool extra)
+        {
+            // Name of goal
+            Console.Write("Name your goal: ");
+            name = Console.ReadLine();
+            // Description of goal
+            Console.Write("Short description of goal: ");
+            description = Console.ReadLine();
+            // Points for completing goal
+            Console.Write("Associated points: ");
+            points = Int32.Parse(Console.ReadLine());
+
+            if (extra)
+            {
+                Console.Write("Repetitions to be completed for bonus: ");
+                repetitions = Int32.Parse(Console.ReadLine());
+                // Bonus points for completing checklist goal
+                Console.Write("Bonus points for completion: ");
+                bonusPoints = Int32.Parse(Console.ReadLine());
+            }
+        }
+
+        void WriteToFile(string file, string line)
+        {
+            using (StreamWriter outputFile = new StreamWriter(file))
+            {
+                outputFile.WriteLine(line); 
+            }
+        }
+        
         // Function to add items to a list.
         void AddToList(List<string> list, string item)
         {
