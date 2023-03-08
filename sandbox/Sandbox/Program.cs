@@ -6,30 +6,18 @@ class Program
     {
         Console.WriteLine("Hello Sandbox World!");
 
-        Student s = new Student("Olivia", "Richards", 8728);
-        Console.WriteLine(s._firstName);
-        
-    }
-}
+        // char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
 
-public class Person
-{
-    public string _firstName;
-    public string _lastName;
+        string text = "Thing:one,two,three";
+        System.Console.WriteLine($"Original text: '{text}'");
 
-    public Person(string first, string last)
-    {
-        _firstName = first;
-        _lastName = last;
-    }
-}
+        string[] words = text.Split(':', ',');
+        System.Console.WriteLine($"{words.Length} words in text:");
 
-public class Student : Person
-{
-    public int _id;
-
-    public Student(string first, string last, int id) : base(first, last)
-    {
-        _id = id;
+        foreach (var word in words)
+        {
+            System.Console.WriteLine(word);
+        }
+            
     }
 }
