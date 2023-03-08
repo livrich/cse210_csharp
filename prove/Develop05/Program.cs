@@ -37,7 +37,7 @@ class Program
                         SimpleGoal g1 = new SimpleGoal(name, description, points);
                         // Add goal to list. Need string representation.
                         string stringLine = $"{g1.CheckBox()},SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
-                        AddToList(goalsList, stringLine);
+                        goalsList.Add(stringLine);
                         break;
                     } 
                     // Create eternal goal
@@ -49,7 +49,7 @@ class Program
                         EternalGaol g2 = new EternalGaol(name, description, points);
                         // Add goal to list. Need string representation.
                         string stringLine = $"EternalGoal:{name},{description},{points}";
-                        AddToList(goalsList, stringLine);
+                        goalsList.Add(stringLine);
                         break;
                     } 
                     // Create checklist goal
@@ -60,8 +60,8 @@ class Program
                         // Make goal
                         ChecklistGoal g3 = new ChecklistGoal(name, description, points, bonusPoints, repetitions);
                         // Add goal to list. Need string representation.
-                        string stringLine = $"SimpleGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
-                        AddToList(goalsList, stringLine);
+                        string stringLine = $"ChecklistGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
+                        goalsList.Add(stringLine);
                         break;
                     } 
                     // Invalid input error message
@@ -140,6 +140,7 @@ class Program
 
             if (extra)
             {
+                // Num repetitions for checklist goal
                 Console.Write("Repetitions to be completed for bonus: ");
                 repetitions = Int32.Parse(Console.ReadLine());
                 // Bonus points for completing checklist goal
@@ -155,12 +156,6 @@ class Program
                 outputFile.WriteLine(line); 
             }
         }
-        
-        // Function to add items to a list.
-        void AddToList(List<string> list, string item)
-        {
-            list.Add(item);
-        }
 
         // Function to load each line of file to list.
         void LoadFile()
@@ -169,8 +164,7 @@ class Program
 
             foreach (string line in fromFile)
             {
-                // goalsList.Add(line);
-                AddToList(goalsList, line);
+                goalsList.Add(line);
             }
         }
 
