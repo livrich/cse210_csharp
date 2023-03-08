@@ -78,7 +78,10 @@ class Program
                 foreach (string line in goalsList)
                 {
                     string[] parts = line.Split(':', ',');
-                    Console.WriteLine(parts);
+                    foreach(var part in parts)
+                    {
+                        Console.WriteLine(part);
+                    }
                 }
             } 
             // Record progress/completion of goal
