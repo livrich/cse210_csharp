@@ -3,10 +3,11 @@ using System;
 public abstract class Goal
 {
     // Attributes
-    protected string _name;
-    protected string _description;
-    protected int _points;
-    private bool _completed;
+    private string _name;
+    private string _description;
+    private int _points;
+    protected bool _isCompleted;
+    private string _checkBox;
 
     // Constructor
     public Goal(string name, string description, int points)
@@ -14,19 +15,30 @@ public abstract class Goal
         _name = name;
         _description = description;
         _points = points;
-        _completed = false;
+        _isCompleted = false;
+        _checkBox = "[ ]";
     }
 
     // Methods
+    public bool GetCompleted()
+    {
+        return _isCompleted;
+    }    
+    
+    public void SetCompleted(bool state)
+    {
+        _isCompleted = state;
+    }
+    
+    public string GetCheckBox()
+    {
+        return _checkBox;
+    }
+
     public abstract bool RecordGoal();
 
-    public string CheckBox(List<bool> list, int index)
+    public string CheckBox()
     {
-        string checkBox = "[ ]";
-        if (list[index] is true)
-        {
-            checkBox = "[X]";
-        }
-        return checkBox;
+        return _checkBox = "[X]";
     }
 }
