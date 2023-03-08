@@ -36,7 +36,7 @@ class Program
                         // Make goal
                         SimpleGoal g1 = new SimpleGoal(name, description, points);
                         // Add goal to list. Need string representation.
-                        string stringLine = $"SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
+                        string stringLine = $"{g1.CheckBox()},SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
                         AddToList(goalsList, stringLine);
                         break;
                     } 
@@ -77,7 +77,8 @@ class Program
                 Console.WriteLine("List Goals");
                 foreach (string line in goalsList)
                 {
-                    
+                    string[] parts = line.Split(':', ',');
+                    Console.WriteLine(parts);
                 }
             } 
             // Record progress/completion of goal
