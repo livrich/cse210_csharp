@@ -56,6 +56,6 @@ public class Address
     // Method to return address as one string
     public string SingleString()
     {
-        return ($"{_street}, {_city}, {_stateProvince}, {_country}");
+        return ($"{_street}\n{_city}, {_stateProvince}\n{_country}");
     }
 }
