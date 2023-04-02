@@ -14,5 +14,12 @@ class Program
         // Test to see if class is working
         Console.WriteLine(p.GetName());
         Console.WriteLine(p.ComputePrice());
+
+        // Instance of Address class
+        Address a = new Address("743 E Whisper Bend Dr", "Draper", "UT", "USA");
+        // Test to see if class is working
+        Console.WriteLine(a.GetStateProvince());
+        Console.WriteLine(a.IsInUSA());
+        Console.WriteLine(a.SingleString());
     }
 }
