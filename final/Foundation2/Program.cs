@@ -21,5 +21,12 @@ class Program
         Console.WriteLine(a.GetStateProvince());
         Console.WriteLine(a.IsInUSA());
         Console.WriteLine(a.SingleString());
+
+        // Instance of Customer class
+        Customer c = new Customer("Jake");
+        // Test to see if class is working
+        Console.WriteLine(c.GetAddress());
+        Address address = c.GetAddress();
+        Console.WriteLine(address.SingleString());
     }
 }
