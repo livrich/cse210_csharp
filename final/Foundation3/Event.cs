@@ -8,8 +8,8 @@ public abstract class Event
     protected string _time;
     protected string _address;
     protected string _standardDetails;
-    protected string _FullDetails;
-    protected string _ShortDetails;
+    protected string _fullDetails;
+    protected string _shortDetails;
 
     // Constructor
     public Event(string title, string description, string date, string time, string address)
@@ -19,19 +19,26 @@ public abstract class Event
         _date = date;
         _time = time;
         _address = address;
-        _standardDetails = $"{_title}\n{_description}\n{_date} @ {_time}\n{_address}";
+        _standardDetails = $"{_title}\n{_description}\n{_date}, {_time}\n{_address}";
     }
 
     // Methods to override
-    public abstract void SetFull();
-    public abstract void SetShort();
+    public abstract string SetFull();
+    public abstract string SetShort();
 
-    public void Summary()
+    // Series of get methods
+    public string GetStandard()
     {
-        Console.WriteLine(_title);
-        Console.WriteLine(_description);
-        Console.WriteLine(_date);
-        Console.WriteLine(_time);
-        Console.WriteLine(_address);
+        return _standardDetails;
+    }
+
+    public string GetFull()
+    {
+        return _fullDetails;
+    }
+
+    public string GetShort()
+    {
+        return _shortDetails;
     }
 }
