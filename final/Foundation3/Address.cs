@@ -42,20 +42,4 @@ public class Address
     {
         return ($"{_street}\n{_city}, {_stateProvince}\n{_country}");
     }
-
-    // // Method to determine if address is in USA
-    // public bool IsInUSA()
-    // {
-    //     if (_country == "US" ||
-    //     _country == "USA" ||
-    //     _country == "United States" ||
-    //     _country == "United States of America")
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
 }
