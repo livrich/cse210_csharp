@@ -11,5 +11,15 @@ public class Reception : Event
         _rsvpEmail = rsvpEmail;
     }
 
+    // Methods to override from Event class
+    public override void SetFull()
+    {
+        _FullDetails = $"{_standardDetails}\nRSVP @ {_rsvpEmail}";
+    }
+
+    public override void SetShort()
+    {
+        _ShortDetails = $"{_date}\nReception: {_title}";
+    }
     
 }

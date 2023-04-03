@@ -11,5 +11,16 @@ public class Outdoor : Event
         _weather = weather;
     }
 
+    // Methods to override from Event class
+    public override void SetFull()
+    {
+        _FullDetails = $"{_standardDetails}\nPredicted Weather: {_weather}";
+    }
+
+    public override void SetShort()
+    {
+        _ShortDetails = $"{_date}\nOutdoor: {_title}";
+    }
+
     
 }
