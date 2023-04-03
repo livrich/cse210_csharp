@@ -9,17 +9,19 @@ public class Reception : Event
     base (title, description, date, time, address)
     {
         _rsvpEmail = rsvpEmail;
+        _fullDetails = SetFull();
+        _shortDetails = SetShort();
     }
 
     // Methods to override from Event class
-    public override void SetFull()
+    public override string SetFull()
     {
-        _FullDetails = $"{_standardDetails}\nRSVP @ {_rsvpEmail}";
+        return $"{_standardDetails}\nRSVP @ {_rsvpEmail}";
     }
 
-    public override void SetShort()
+    public override string SetShort()
     {
-        _ShortDetails = $"{_date}\nReception: {_title}";
+        return $"{_date}\nReception: {_title}";
     }
     
 }

@@ -9,17 +9,19 @@ public class Outdoor : Event
     base (title, description, date, time, address)
     {
         _weather = weather;
+        _fullDetails = SetFull();
+        _shortDetails = SetShort();
     }
 
     // Methods to override from Event class
-    public override void SetFull()
+    public override string SetFull()
     {
-        _FullDetails = $"{_standardDetails}\nPredicted Weather: {_weather}";
+        return $"{_standardDetails}\nPredicted Weather: {_weather}";
     }
 
-    public override void SetShort()
+    public override string SetShort()
     {
-        _ShortDetails = $"{_date}\nOutdoor: {_title}";
+        return $"{_date}\nOutdoor: {_title}";
     }
 
     

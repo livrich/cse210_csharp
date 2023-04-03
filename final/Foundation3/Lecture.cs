@@ -11,16 +11,18 @@ public class Lecture : Event
     {
         _speaker = speaker;
         _capacity = capacity;
+        _fullDetails = SetFull();
+        _shortDetails = SetShort();
     }
 
     // Override methods from Event class
-    public override void SetFull()
+    public override string SetFull()
     {
-        _FullDetails = $"{_standardDetails}\nLecture with {_speaker}\nRoom seats {_capacity}";
+        return $"{_standardDetails}\nLecture with: {_speaker}\nRoom seats {_capacity}";
     }
 
-    public override void SetShort()
+    public override string SetShort()
     {
-        _ShortDetails = $"{_date}\nLecture: {_title}";
+        return $"{_date}\nLecture: {_title}";
     }
 }
