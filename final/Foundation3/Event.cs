@@ -1,15 +1,15 @@
 using System;
 
-public class Event
+public abstract class Event
 {
-    private string _title;
-    private string _description;
-    private string _date;
-    private string _time;
-    private string _address;
-    protected string _standardMessage;
-    protected string _FullMessage;
-    protected string _ShortMessage;
+    protected string _title;
+    protected string _description;
+    protected string _date;
+    protected string _time;
+    protected string _address;
+    protected string _standardDetails;
+    protected string _FullDetails;
+    protected string _ShortDetails;
 
     // Constructor
     public Event(string title, string description, string date, string time, string address)
@@ -19,7 +19,12 @@ public class Event
         _date = date;
         _time = time;
         _address = address;
+        _standardDetails = $"{_title}\n{_description}\n{_date} @ {_time}\n{_address}";
     }
+
+    // Methods to override
+    public abstract void SetFull();
+    public abstract void SetShort();
 
     public void Summary()
     {
