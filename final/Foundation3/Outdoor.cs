@@ -23,6 +23,4 @@ public class Outdoor : Event
     {
         return $"{_date}\nOutdoor: {_title}";
     }
-
-    
 }

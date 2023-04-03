@@ -23,5 +23,4 @@ public class Reception : Event
     {
         return $"{_date}\nReception: {_title}";
     }
-    
 }
