@@ -1,3 +1,16 @@
+/* Note to Self
+Things that could be improved:
+- Have preset products and a UI that lets user choose a product from a list
+- Ask user if they want to add another product
+        * Instead of asking how many they want to add once upfront
+- Way to add as many orders as user wants (instead of hardcoded 2 orders)
+        * Loop that asks user if they want to add another order
+- Error handling code incase user types string where int is required
+        * Such as with quantity of product
+- Add area code to address
+*/
+
+
 using System;
 
 class Program
