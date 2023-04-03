@@ -19,6 +19,14 @@ public class Event
         _date = date;
         _time = time;
         _address = address;
-        
+    }
+
+    public void Summary()
+    {
+        Console.WriteLine(_title);
+        Console.WriteLine(_description);
+        Console.WriteLine(_date);
+        Console.WriteLine(_time);
+        Console.WriteLine(_address);
     }
 }
