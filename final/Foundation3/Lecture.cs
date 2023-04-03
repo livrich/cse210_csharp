@@ -1,6 +1,6 @@
 using System;
 
-public class Lecture
+public class Lecture : Event
 {
     private string _speaker;
     private int _capacity;

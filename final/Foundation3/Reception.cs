@@ -1,6 +1,6 @@
 using System;
 
-public class Reception
+public class Reception : Event
 {
     private string _rsvpEmail;
 
