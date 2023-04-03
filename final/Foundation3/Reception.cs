@@ -5,8 +5,8 @@ public class Reception : Event
     private string _rsvpEmail;
 
     // Constructor
-    public Reception(string title, string description, string date, string time, string address, string rsvpEmail): 
-    base (title, description, date, time, address)
+    public Reception(string title, string description, string date, string time, string rsvpEmail): 
+    base (title, description, date, time)
     {
         _rsvpEmail = rsvpEmail;
         _fullDetails = SetFull();
@@ -16,7 +16,7 @@ public class Reception : Event
     // Methods to override from Event class
     public override string SetFull()
     {
-        return $"{_standardDetails}\nRSVP @ {_rsvpEmail}";
+        return $"RSVP @ {_rsvpEmail}\n{_standardDetails}";
     }
 
     public override string SetShort()

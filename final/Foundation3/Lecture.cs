@@ -6,8 +6,8 @@ public class Lecture : Event
     private int _capacity;
 
     // Constructor
-    public Lecture(string title, string description, string date, string time, string address, string speaker, int capacity): 
-    base (title, description, date, time, address)
+    public Lecture(string title, string description, string date, string time, string speaker, int capacity): 
+    base (title, description, date, time)
     {
         _speaker = speaker;
         _capacity = capacity;
@@ -18,7 +18,7 @@ public class Lecture : Event
     // Override methods from Event class
     public override string SetFull()
     {
-        return $"{_standardDetails}\nLecture with: {_speaker}\nRoom seats {_capacity}";
+        return $"Lecture with: {_speaker}\nRoom seats {_capacity}\n{_standardDetails}";
     }
 
     public override string SetShort()
