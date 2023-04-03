@@ -2,7 +2,7 @@ using System;
 
 public class Order
 {
-    private List<Product> products = new List<Product>();
+    private List<Product> _products;
     private Customer _customer;
     private double _orderTotal;
 
@@ -10,13 +10,20 @@ public class Order
     // Constructor
     public Order()
     {
+        _products = new List<Product>();
         _customer = MakeCustomer();
+        _orderTotal = 0;
     }
 
-    // Getter method
+    // Getter methods
     public double GetOrderTotal()
     {
         return _orderTotal;
+    }
+
+    public Customer GetCustomer()
+    {
+        return _customer;
     }
 
     // Method to create a customer
@@ -53,14 +60,14 @@ public class Order
     public void AddProductToOrder()
     {
         Product product = MakeProduct();
-        products.Add(product);
+        _products.Add(product);
     }
 
     // Method to calculate total price of order
-    public void CalcOrderTotal()
+    public double CalcOrderTotal()
     {
         // Add up price of products
-        foreach (Product p in products)
+        foreach (Product p in _products)
         {
             _orderTotal += p.ComputePrice();
         }
@@ -76,13 +83,15 @@ public class Order
             shippingCost = 35;
         }
         _orderTotal += shippingCost;
+
+        return _orderTotal;
     }
 
     // Method to display packing label
     public void PackingLabel()
     {
         Console.WriteLine("Packing Label:");
-        foreach (Product p in products)
+        foreach (Product p in _products)
         {
             Console.WriteLine($"{p.GetName()} - {p.GetID()}");
         }
