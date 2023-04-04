@@ -13,16 +13,20 @@ public abstract class Activity
     protected string _type;
 
     // Constructor
-    public Activity(int duration)
+    public Activity()
     {
         _date = DateTime.Today;
-        _duration = duration;
-        
+    }
+
+    public int AskDuration()
+    {
+        Console.Write($"How many minutes did you {_type}: ");
+        return Int32.Parse(Console.ReadLine());
     }
 
     // Abstract method to calculate distance
     public abstract double CalcDistance();
-    
+
     /* Speed and Pace can be calculated the same way
     for each type of Activity. Abstraction not needed. */
 
@@ -43,7 +47,7 @@ public abstract class Activity
     {
         return $"{_date.ToString("dd MMM yyyy")} {_type} ({_duration} min):" +
         $"\n\tDistance - {_distance} miles " +
-        $"\n\tSpeed - {_speed} miles per hour " +
+        $"\n\tSpeed - {Math.Round(_speed,2)} miles per hour " +
         $"\n\tPace - {Math.Round(_pace,2)} min per mile";
     }
 }
