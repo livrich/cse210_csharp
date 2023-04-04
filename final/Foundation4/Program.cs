@@ -4,19 +4,28 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Testing Swim/Activity Classes
+        // List to store activities
+        List<Activity> activities = new List<Activity>();
+        
+        // Create instance of Swim class and add to list
         Swim swim = new Swim();
-        Console.WriteLine(swim.GetSummary());
-        Console.WriteLine();
+        activities.Add(swim);
 
-        // Testing Bike Class
+        // Create instance of Bike class and add to list
         Bike bike = new Bike();
-        Console.WriteLine(bike.GetSummary());
-        Console.WriteLine();
+        activities.Add(bike);
 
-        // Testing Run Class
+        // Create instance of Run class and add to list
         Run run = new Run();
-        Console.WriteLine(run.GetSummary());
-        Console.WriteLine();
+        activities.Add(run);
+
+        // Display each Activity in activities list
+        foreach (Activity a in activities)
+        {
+            // Call summary method to display Activity
+            Console.WriteLine(a.GetSummary());
+            // Print blank line between Activities
+            Console.WriteLine();
+        }
     }
 }
