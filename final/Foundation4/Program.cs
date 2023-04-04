@@ -5,17 +5,17 @@ class Program
     static void Main(string[] args)
     {
         // Testing Swim/Activity Classes
-        Swim swim = new Swim(30);
+        Swim swim = new Swim();
         Console.WriteLine(swim.GetSummary());
         Console.WriteLine();
 
         // Testing Bike Class
-        Bike bike = new Bike(40);
+        Bike bike = new Bike();
         Console.WriteLine(bike.GetSummary());
         Console.WriteLine();
 
         // Testing Run Class
-        Run run = new Run(60);
+        Run run = new Run();
         Console.WriteLine(run.GetSummary());
         Console.WriteLine();
     }
