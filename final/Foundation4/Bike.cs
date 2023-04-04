@@ -5,13 +5,13 @@ public class Bike : Activity
     // No private member variables for this class
 
     // Constructor
-    public Bike(int duration):
-    base (duration)
+    public Bike()
     {
+        _type = "Bike";
+        _duration = AskDuration();
         _distance = CalcDistance();
         _speed = CalcSpeed();
         _pace = CalcPace();
-        _type = "Bike";
     }
 
     // Override distance method
@@ -21,8 +21,7 @@ public class Bike : Activity
         to calculate distance for biking. */
 
         // Get distance from user (Makes more sense)
-        Console.Write("How far did you bike? Miles: ");
-        double distance = Double.Parse(Console.ReadLine());
-        return distance;
+        Console.Write("How many miles did you bike? ");
+        return Double.Parse(Console.ReadLine());
     }
 }

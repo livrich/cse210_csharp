@@ -5,13 +5,13 @@ public class Swim : Activity
     private int _laps;
 
     // Constructor
-    public Swim(int duration):
-    base (duration)
+    public Swim()
     {
+        _type = "Swim";
+        _duration = AskDuration();
         _distance = CalcDistance();
         _speed = CalcSpeed();
         _pace = CalcPace();
-        _type = "Swim";
     }
 
     // Override distance method

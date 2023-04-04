@@ -5,13 +5,13 @@ public class Run : Activity
     // No private member variables for this class
 
     // Constructor
-    public Run(int duration):
-    base (duration)
+    public Run()
     {
+        _type = "Run";
+        _duration = AskDuration();
         _distance = CalcDistance();
         _speed = CalcSpeed();
         _pace = CalcPace();
-        _type = "Run";
     }
 
     // Override distance method
@@ -21,8 +21,7 @@ public class Run : Activity
         don't know how to calculate distance for running. */
 
         // Get distance from user (Makes more sense)
-        Console.Write("How far did you run? Miles: ");
-        double distance = Double.Parse(Console.ReadLine());
-        return distance;
+        Console.Write("How many miles did you run? ");
+        return Double.Parse(Console.ReadLine());
     }
 }
