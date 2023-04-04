@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation4 World!");
+        // Testing Swim/Activity Classes
+        Swim swim = new Swim(30, 40);
+        Console.WriteLine($"{swim.GetSummary()}");
     }
 }
