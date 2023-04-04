@@ -3,10 +3,9 @@ using System;
 public abstract class Activity
 {
     protected DateTime _date;
-    // Format _date.ToString("dd MMM yyyy")
+    // Format _date.ToString("dd MMM yyyy") [04 Apr 2023]
 
     protected int _duration;
-    // User enters how far they went
     protected double _distance;
     protected double _speed;
     protected double _pace;
