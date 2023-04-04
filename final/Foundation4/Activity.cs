@@ -17,15 +17,26 @@ public abstract class Activity
     {
         _date = DateTime.Today;
         _duration = duration;
+        
     }
 
-    // Abstract methods to calculate distance,
-    // speed, and pace.
+    // Abstract method to calculate distance
     public abstract double CalcDistance();
     
-    public abstract double CalcSpeed();
-    
-    public abstract double CalcPace();
+    /* Speed and Pace can be calculated the same way
+    for each type of Activity. Abstraction not needed. */
+
+    // Method to calculate speed
+    public double CalcSpeed()
+    {
+        return (_distance / _duration) * 60;
+    }
+
+    // Method to calculate pace
+    public double CalcPace()
+    {
+        return _duration / _distance;
+    }
 
     // Method to return summary of activity
     public string GetSummary()
