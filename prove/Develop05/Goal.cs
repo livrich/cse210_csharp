@@ -39,6 +39,12 @@ public abstract class Goal
         return _checkBox = "[X]";
     }
 
+    // Method to get name of goal
+    public string GetName()
+    {
+        return _name;
+    }
+
     
 
     // // Methods
