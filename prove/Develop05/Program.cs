@@ -11,12 +11,14 @@ class Program
 
         // Testing simple goal
         SimpleGoal sg = new SimpleGoal("SimpleGoal", "Paint", "Finish painting of bridge", 200);
-        Console.WriteLine(sg.GetDisplaySummary());
+        // Console.WriteLine(sg.GetDisplaySummary());
         Console.WriteLine(sg.GetFileSummary());
+        goals.Add(sg);
         sg.SetComplete();
         sg.MarkCheckBox();
-        Console.WriteLine(sg.GetDisplaySummary());
+        // Console.WriteLine(sg.GetDisplaySummary());
         Console.WriteLine(sg.GetFileSummary());
+        goals.Add(sg);
 
 
         // // Load file when program opens
@@ -28,78 +30,75 @@ class Program
         // int repetitions = 0;
         // int bonusPoints = 0;
 
-        // while (true)
-        // {
-        //     DisplayMainMenu();
-        //     Console.Write("Select a choice: ");
-        //     string choice = Console.ReadLine();
+        while (true)
+        {
+            DisplayMainMenu();
+            Console.Write("Select a choice: ");
+            string choice = Console.ReadLine();
 
-        //     // Create new goal
-        //     if (choice == "1")
-        //     {
-        //         while (true)
-        //         {
-        //             DisplayGoalMenu();
-        //             Console.Write("Select goal type (by number): ");
-        //             string goalType = Console.ReadLine();
+            // Create new goal
+            if (choice == "1")
+            {
+                // while (true)
+                // {
+                //     DisplayGoalMenu();
+                //     Console.Write("Select goal type (by number): ");
+                //     string goalType = Console.ReadLine();
 
-        //             // Create simple goal
-        //             if (goalType == "1") 
-        //             {
-        //                 // Ask questions about goal
-        //                 AskQuestions(false);
-        //                 // Make goal
-        //                 SimpleGoal g1 = new SimpleGoal(name, description, points);
-        //                 // Add goal to list. Need string representation.
-        //                 // string stringLine = $"{g1.CheckBox()},SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
-        //                 goals.Add(g1);
-        //                 break;
-        //             } 
-        //             // Create eternal goal
-        //             else if (goalType == "2") 
-        //             {
-        //                 // Ask questions about goal
-        //                 AskQuestions(false);
-        //                 // Make goal
-        //                 EternalGaol g2 = new EternalGaol(name, description, points);
-        //                 // Add goal to list. Need string representation.
-        //                 // string stringLine = $"EternalGoal:{name},{description},{points}";
-        //                 goals.Add(g2);
-        //                 break;
-        //             } 
-        //             // Create checklist goal
-        //             else if (goalType == "3") 
-        //             {
-        //                 // Ask questions about goal
-        //                 AskQuestions(true);
-        //                 // Make goal
-        //                 ChecklistGoal g3 = new ChecklistGoal(name, description, points, bonusPoints, repetitions);
-        //                 // Add goal to list. Need string representation.
-        //                 // string stringLine = $"ChecklistGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
-        //                 goals.Add(g3);
-        //                 break;
-        //             } 
-        //             // Invalid input error message
-        //             else 
-        //             {
-        //                 Console.WriteLine("That was not a valid option.");
-        //             }
-        //         }
-        //     } 
-        //     // Display list of goals
-        //     else if (choice == "2")
-        //     {
-        //         Console.WriteLine("List Goals");
-        //         foreach (Goal g in goals)
-        //         {
-        //             Console.WriteLine(g);
-        //             // string[] parts = line.Split(':', ',');
-        //             // foreach(var part in parts)
-        //             // {
-        //             //     Console.WriteLine(part);
-        //             // }
-        //         }
-        //     } 
+                //     // Create simple goal
+                //     if (goalType == "1") 
+                //     {
+                //         // Ask questions about goal
+                //         AskQuestions(false);
+                //         Make goal
+                //         SimpleGoal g1 = new SimpleGoal(name, description, points);
+                //         // Add goal to list. Need string representation.
+                //         // string stringLine = $"{g1.CheckBox()},SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
+                //         goals.Add(g1);
+                //         break;
+                //     } 
+                //     // Create eternal goal
+                //     else if (goalType == "2") 
+                //     {
+                //         // Ask questions about goal
+                //         AskQuestions(false);
+                //         // Make goal
+                //         EternalGaol g2 = new EternalGaol(name, description, points);
+                //         // Add goal to list. Need string representation.
+                //         // string stringLine = $"EternalGoal:{name},{description},{points}";
+                //         goals.Add(g2);
+                //         break;
+                //     } 
+                //     // Create checklist goal
+                //     else if (goalType == "3") 
+                //     {
+                //         // Ask questions about goal
+                //         AskQuestions(true);
+                //         // Make goal
+                //         ChecklistGoal g3 = new ChecklistGoal(name, description, points, bonusPoints, repetitions);
+                //         // Add goal to list. Need string representation.
+                //         // string stringLine = $"ChecklistGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
+                //         goals.Add(g3);
+                //         break;
+                //     } 
+                //     // Invalid input error message
+                //     else 
+                //     {
+                //         Console.WriteLine("That was not a valid option.");
+                //     }
+                // }
+            } 
+            // Display list of goals
+            else if (choice == "2")
+            {
+                Console.WriteLine("List Goals");
+                int lineNum = 1;
+                foreach (Goal g in goals)
+                {
+                    Console.WriteLine($"{lineNum}. {g.GetDisplaySummary()}");
+                    lineNum ++;
+                }
+            } 
         //     // Record progress/completion of goal
         //     else if (choice == "3")
         //     {
@@ -129,15 +128,15 @@ class Program
         // }
         
 
-        // void DisplayMainMenu()
-        // {
-        //     Console.WriteLine("\nMain Menu:");
-        //     Console.WriteLine("  1. Create New Goal");
-        //     Console.WriteLine("  2. List Goals");
-        //     Console.WriteLine("  3. Record Event");
-        //     Console.WriteLine("  4. Save Goals");
-        //     Console.WriteLine("  5. Quit");
-        // }
+        void DisplayMainMenu()
+        {
+            Console.WriteLine("\nMain Menu:");
+            Console.WriteLine("  1. Create New Goal");
+            Console.WriteLine("  2. List Goals");
+            Console.WriteLine("  3. Record Event");
+            Console.WriteLine("  4. Save Goals");
+            Console.WriteLine("  5. Quit");
+        }
 
         // void DisplayGoalMenu()
         // {
@@ -207,6 +206,6 @@ class Program
         // void SaveFile(string file, List<string> list)
         // {
         //     File.WriteAllLines(file, list);
-        // }
+        }
     }
 }
