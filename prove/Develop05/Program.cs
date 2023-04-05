@@ -120,17 +120,17 @@ class Program
                 // Message to inform user task was completed
                 Console.WriteLine("Progress has been recorded");
             } 
-        //     // Save file
-        //     else if (choice == "4")
-        //     {
-        //         foreach (Goal g in goals)
-        //         {
-        //             string sg = g.ToString();
-        //             stringGoals.Add(sg);
-        //             SaveFile("goals.txt", stringGoals);
-        //             Console.WriteLine("File saved successfully.");
-        //         }
-        //     } 
+            // Save file
+            else if (choice == "4")
+            {
+                foreach (Goal g in goals)
+                {
+                    string str = g.GetFileSummary();
+                    stringGoals.Add(str);
+                    SaveFile("goals.txt", stringGoals);
+                }
+                Console.WriteLine("File saved successfully.");
+            } 
             // Exit program
             else if (choice == "5")
             {
@@ -218,10 +218,10 @@ class Program
         //     }
         // }
 
-        // // Function to save list to text file.
-        // void SaveFile(string file, List<string> list)
-        // {
-        //     File.WriteAllLines(file, list);
-        // }
+        // Function to save list to text file.
+        void SaveFile(string file, List<string> list)
+        {
+            File.WriteAllLines(file, list);
+        }
     }
 }
