@@ -1,19 +1,19 @@
-using System;
+// using System;
 
-public class EternalGaol : Goal
-{
-    // Attributes
+// public class EternalGaol : Goal
+// {
+//     // Attributes
 
-    // Constructor
-    public EternalGaol(string name, string description, int points) 
-    : base(name, description, points)
-    {
+//     // Constructor
+//     public EternalGaol(string type, string name, string description, int points) 
+//     : base(type, name, description, points)
+//     {
 
-    }
+//     }
 
-    // Methods
-    public override bool RecordGoal()
-    {
-        return true;
-    }   
-}
+//     // Methods
+//     public override bool RecordGoal()
+//     {
+//         return true;
+//     }   
+// }
