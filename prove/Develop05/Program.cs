@@ -10,19 +10,19 @@ class Program
         List<string> stringGoals = new List<string>();
 
         // Testing simple goal
-        SimpleGoal sg = new SimpleGoal("SimpleGoal", "Paint", "Finish painting of bridge", 200);
+        // SimpleGoal sg = new SimpleGoal("SimpleGoal", "Paint", "Finish painting of bridge", 200);
         // Console.WriteLine(sg.GetDisplaySummary());
-        Console.WriteLine(sg.GetFileSummary());
-        goals.Add(sg);
+        // Console.WriteLine(sg.GetFileSummary());
+        // goals.Add(sg);
         // sg.SetComplete();
         // sg.MarkCheckBox();
         // Console.WriteLine(sg.GetDisplaySummary());
-        Console.WriteLine(sg.GetFileSummary());
-        goals.Add(sg);
+        // Console.WriteLine(sg.GetFileSummary());
+        // goals.Add(sg);
 
 
-        // // Load file when program opens
-        // LoadFile();
+        // Load file when program opens
+        LoadFile();
 
         // string name;
         // string description;
@@ -185,38 +185,36 @@ class Program
         //     }
         // }
 
-        // void WriteToFile(string file, string line)
-        // {
-        //     using (StreamWriter outputFile = new StreamWriter(file))
-        //     {
-        //         outputFile.WriteLine(line); 
-        //     }
-        // }
+        // Function to load each line of file to list.
+        // Each string line will be converted back to Goal object.
+        void LoadFile()
+        {
+            string[] fromFile = File.ReadAllLines("goals.txt");
 
-        // // Function to load each line of file to list.
-        // // Each string line will be converted back to Gaol object.
-        // void LoadFile()
-        // {
-        //     string[] fromFile = File.ReadAllLines("goals.txt");
+            foreach (string line in fromFile)
+            {
+                // Split type of goal from goal data
+                string[] parts = line.Split(':');
+                string type = parts[0];
+                string data = parts[1];
 
-        //     foreach (string line in fromFile)
-        //     {
-        //         string[] parts = line.Split(':');
-        //         string type = parts[0];
-        //         string data = parts[1];
-        //         string[] pieces = data.Split(',');
-        //         name = pieces[0];
-        //         description = pieces[1];
+                // Split goal data into individual parts
+                // Will most likely need if statement for splitting farther
+                // Will need more for other goals than just simple goal
+                string[] pieces = data.Split(',');
+                string name = pieces[0];
+                string description = pieces[1];
+                int points = Int32.Parse(pieces[2]);
+                bool isComplete = bool.Parse(pieces[3]);
+                string checkBox = pieces[4];
 
-
-        //         if (type == "SimpleGoal")
-        //         {
-        //             SimpleGoal sg = new SimpleGoal()
-        //         }
-
-        //         stringGoals.Add(line);
-        //     }
-        // }
+                if (type == "SimpleGoal")
+                {
+                    SimpleGoal simpleGoal = new SimpleGoal(type, name, description, points, isComplete, checkBox);
+                    goals.Add(simpleGoal);
+                }
+            }
+        }
 
         // Function to save list to text file.
         void SaveFile(string file, List<string> list)
