@@ -14,8 +14,8 @@ class Program
         // Console.WriteLine(sg.GetDisplaySummary());
         Console.WriteLine(sg.GetFileSummary());
         goals.Add(sg);
-        sg.SetComplete();
-        sg.MarkCheckBox();
+        // sg.SetComplete();
+        // sg.MarkCheckBox();
         // Console.WriteLine(sg.GetDisplaySummary());
         Console.WriteLine(sg.GetFileSummary());
         goals.Add(sg);
@@ -99,11 +99,27 @@ class Program
                     lineNum ++;
                 }
             } 
-        //     // Record progress/completion of goal
-        //     else if (choice == "3")
-        //     {
-        //         Console.WriteLine("Record");
-        //     } 
+            // Record progress/completion of goal
+            else if (choice == "3")
+            {
+                Console.WriteLine("Record");
+                Console.WriteLine("The goals are:");
+                int lineNum = 1;
+                foreach (Goal g in goals)
+                {
+                    Console.WriteLine($"{lineNum}. {g.GetName()}");
+                    lineNum ++;
+                }
+                Console.Write("Which goal did you accomplish? ");
+                int finished = Int32.Parse(Console.ReadLine());
+
+                // Will need to augment for other classes than just simple
+                goals[finished - 1].SetComplete();
+                goals[finished - 1].MarkCheckBox();
+
+                // Message to inform user task was completed
+                Console.WriteLine("Progress has been recorded");
+            } 
         //     // Save file
         //     else if (choice == "4")
         //     {
@@ -115,17 +131,17 @@ class Program
         //             Console.WriteLine("File saved successfully.");
         //         }
         //     } 
-        //     // Exit program
-        //     else if (choice == "5")
-        //     {
-        //         System.Environment.Exit(0);
-        //     } 
-        //     // Invalid input error message
-        //     else 
-        //     {
-        //         Console.WriteLine("That was not a valid option.");
-        //     }
-        // }
+            // Exit program
+            else if (choice == "5")
+            {
+                System.Environment.Exit(0);
+            } 
+            // Invalid input error message
+            else 
+            {
+                Console.WriteLine("That was not a valid option.");
+            }
+        }
         
 
         void DisplayMainMenu()
@@ -206,6 +222,6 @@ class Program
         // void SaveFile(string file, List<string> list)
         // {
         //     File.WriteAllLines(file, list);
-        }
+        // }
     }
 }
