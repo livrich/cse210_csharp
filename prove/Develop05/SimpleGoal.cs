@@ -5,8 +5,8 @@ public class SimpleGoal : Goal
     // All attributes are inherited
 
     // Constructor
-    public SimpleGoal(string type, string name, string description, int points) 
-    : base(type, name, description, points)
+    public SimpleGoal(string type, string name, string description, int points, bool isComplete = false, string checkBox = "[ ]") 
+    : base(type, name, description, points, isComplete, checkBox)
     {
 
     }
