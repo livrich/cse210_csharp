@@ -3,42 +3,64 @@ using System;
 public abstract class Goal
 {
     // Attributes
-    private string _name;
-    private string _description;
-    private int _points;
-    protected bool _isCompleted;
-    private string _checkBox;
+    protected string _type;
+    protected string _name;
+    protected string _description;
+    protected int _points;
+    protected bool _isComplete;
+    protected string _checkBox;
 
     // Constructor
-    public Goal(string name, string description, int points)
+    public Goal(string type, string name, string description, int points, bool isComplete = false, string checkBox = "[ ]")
     {
+        _type = type;
         _name = name;
         _description = description;
         _points = points;
-        _isCompleted = false;
-        _checkBox = "[ ]";
+        _isComplete = isComplete;
+        _checkBox = checkBox;
     }
 
-    // Methods
-    public bool GetCompleted()
-    {
-        return _isCompleted;
-    }    
-    
-    public void SetCompleted(bool state)
-    {
-        _isCompleted = state;
-    }
-    
-    public string GetCheckBox()
-    {
-        return _checkBox;
-    }
+    // Calculate total points (Should be in main)
+    // Display total points (Should be in main)
 
-    public abstract bool RecordGoal();
+    // Abstract method to report goal as finished
+    public abstract bool SetComplete();
 
-    public string CheckBox()
+    // Abstract method to return string summary for file
+    public abstract string GetFileSummary();
+
+    // Abstract method to return string summary to display
+    public abstract string GetDisplaySummary();
+
+    // Method to mark box of completed goals
+    public string MarkCheckBox()
     {
         return _checkBox = "[X]";
     }
+
+    
+
+    // // Methods
+    // public bool GetCompleted()
+    // {
+    //     return _isComplete;
+    // }    
+    
+    // public void SetCompleted(bool state)
+    // {
+    //     _isComplete = state;
+    // }
+    
+    // public string GetCheckBox()
+    // {
+    //     return _checkBox;
+    // }
+
+    // public abstract bool RecordGoal();
+
+    // public string CheckBox()
+    // {
+    //     return _checkBox = "[X]";
+    // }
 }
