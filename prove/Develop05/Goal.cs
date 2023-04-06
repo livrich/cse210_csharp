@@ -11,7 +11,8 @@ public abstract class Goal
     protected string _checkBox;
 
     // Constructor
-    public Goal(string type, string name, string description, int points, bool isComplete = false, string checkBox = "[ ]")
+    public Goal(string type, string name, string description, int points, 
+    bool isComplete = false, string checkBox = "[ ]")
     {
         _type = type;
         _name = name;
@@ -21,16 +22,13 @@ public abstract class Goal
         _checkBox = checkBox;
     }
 
-    // Calculate total points (Should be in main)
-    // Display total points (Should be in main)
-
     // Abstract method to report goal as finished
     public abstract bool SetComplete();
 
     // Abstract method to return string summary for file
     public abstract string GetFileSummary();
 
-    // Abstract method to return string summary to display
+    // Abstract method to return string to display to screen
     public abstract string GetDisplaySummary();
 
     // Method to mark box of completed goals
@@ -45,7 +43,7 @@ public abstract class Goal
         return _name;
     }
 
-    // Method to get status of completion
+    // Method to get status of complete
     public bool GetCompleted()
     {
         return _isComplete;
@@ -56,29 +54,4 @@ public abstract class Goal
     {
         return _points;
     }
-
-    
-
-    // // Methods
-    // public bool GetCompleted()
-    // {
-    //     return _isComplete;
-    // }    
-    
-    // public void SetCompleted(bool state)
-    // {
-    //     _isComplete = state;
-    // }
-    
-    // public string GetCheckBox()
-    // {
-    //     return _checkBox;
-    // }
-
-    // public abstract bool RecordGoal();
-
-    // public string CheckBox()
-    // {
-    //     return _checkBox = "[X]";
-    // }
 }
