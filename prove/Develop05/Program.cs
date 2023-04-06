@@ -20,18 +20,6 @@ class Program
         // Console.WriteLine(sg.GetFileSummary());
         // goals.Add(sg);
 
-        // Testing eternal goal
-        // EternalGoal eg = new EternalGoal("EternalGoal", "Make Bed", "Make bed every morning", 5);
-        // Console.WriteLine(eg.GetDisplaySummary());
-        // Console.WriteLine(eg.GetFileSummary());
-        // goals.Add(eg);
-        // eg.SetComplete();
-        // eg.MarkCheckBox();
-        // Console.WriteLine(eg.GetDisplaySummary());
-        // Console.WriteLine(eg.GetFileSummary());
-        // goals.Add(eg);
-
-
         // Load file when program opens
         LoadFile();
 
@@ -42,8 +30,8 @@ class Program
         string name;
         string description;
         int points;
-        int repetitions;
-        int bonusPoints;
+        int repetitions = 0;
+        int bonusPoints = 0;
 
         while (true)
         {
@@ -85,18 +73,17 @@ class Program
                         goals.Add(g2);
                         break;
                     } 
-                //     // Create checklist goal
-                //     else if (goalType == "3") 
-                //     {
-                //         // Ask questions about goal
-                //         AskQuestions(true);
-                //         // Make goal
-                //         ChecklistGoal g3 = new ChecklistGoal(name, description, points, bonusPoints, repetitions);
-                //         // Add goal to list. Need string representation.
-                //         // string stringLine = $"ChecklistGoal:{name},{description},{points},{bonusPoints},{g3.GetRepsCompleted()},{g3.GetTotalReps()}";
-                //         goals.Add(g3);
-                //         break;
-                //     } 
+                    // Create checklist goal
+                    else if (goalType == "3") 
+                    {
+                        // Ask questions about goal
+                        AskQuestions(true);
+                        // Make goal
+                        ChecklistGoal g3 = new ChecklistGoal("ChecklistGoal", name, description, points, bonusPoints, repetitions);
+                        // Add goal to list of Goal objects
+                        goals.Add(g3);
+                        break;
+                    } 
                     // Invalid input error message
                     else 
                     {
@@ -129,25 +116,31 @@ class Program
                 int finished = Int32.Parse(Console.ReadLine());
                 finished -= 1;
 
-                if (goals[finished].GetGoalType() == "EternalGoal")
+                if (goals[finished].GetCompleted() == true)
                 {
-                    goals[finished].IncreaseRepetitions();
+                    Console.WriteLine("You have already finished that goal.");
                 }
-                else if (goals[finished].GetGoalType() == "ChecklistGoal")
+                else
                 {
-                    goals[finished].IncreaseRepetitions();
-                    // If statement to check if repetitions = total reps
-                    // then goals[finished].SetComplete();
-                    // goals[finished].MarkCheckBox();
-                }
-                else // "SimpleGoal"
-                {
-                    goals[finished].SetComplete();
-                    goals[finished].MarkCheckBox();
-                }
+                    if (goals[finished].GetGoalType() == "EternalGoal")
+                    {
+                        goals[finished].IncreaseRepetitions();
+                    }
+                    else if (goals[finished].GetGoalType() == "ChecklistGoal")
+                    {
+                        goals[finished].IncreaseRepetitions();
+                        goals[finished].SetComplete();
+                        goals[finished].MarkCheckBox();
+                    }
+                    else // "SimpleGoal"
+                    {
+                        goals[finished].SetComplete();
+                        goals[finished].MarkCheckBox();
+                    }
 
-                // Message to inform user task was completed
-                Console.WriteLine("Progress has been recorded");
+                    // Message to inform user task was completed
+                    Console.WriteLine("Progress has been recorded");
+                }
             } 
             // Save file
             else if (choice == "4")
@@ -203,10 +196,12 @@ class Program
                 if (g.GetRepetitions() > 0)
                 {
                     totalPoints += g.GetPoints() * g.GetRepetitions();
-                    // if (g.GetBonus() > 0)
-                    // {
-                    //     totalPoints += g.GetBonus();
-                    // }
+                }
+                if (g.GetGoalType() == "CheckListGoal" && g.GetCompleted() == true)
+                {
+                    string[] pieces = g.GetFileSummary().Split(':', ',');
+                    int bonus = Int32.Parse(pieces[4]);
+                    totalPoints += bonus;
                 }
             }
             return totalPoints;
@@ -276,22 +271,26 @@ class Program
                     string checkBox = pieces[4];
                     int repetitions = Int32.Parse(pieces[5]);
 
-                    EternalGoal eternalGoal = new EternalGoal(type, name, description, points, isComplete, checkBox, repetitions);
+                    EternalGoal eternalGoal = new EternalGoal(type, name, description, points, 
+                        isComplete, checkBox, repetitions);
                     goals.Add(eternalGoal);
                 }
-                // else
-                // {
-                //     string[] pieces = data.Split(',');
-                //     string name = pieces[0];
-                //     string description = pieces[1];
-                //     int points = Int32.Parse(pieces[2]);
-                //     bool isComplete = bool.Parse(pieces[3]);
-                //     string checkBox = pieces[4];
-                //     int repetitions = Int32.Parse(pieces[5]);
-                //     int totalReps = Int32.Parse(pieces[6]);
+                else
+                {
+                    string[] pieces = data.Split(',');
+                    string name = pieces[0];
+                    string description = pieces[1];
+                    int points = Int32.Parse(pieces[2]);
+                    int bonusPoints = Int32.Parse(pieces[3]);
+                    bool isComplete = bool.Parse(pieces[4]);
+                    string checkBox = pieces[5];
+                    int repsCompleted = Int32.Parse(pieces[6]);
+                    int totalReps = Int32.Parse(pieces[7]);
 
-                    
-                // }
+                    ChecklistGoal checklistGoal = new ChecklistGoal(type, name, description, points, 
+                        bonusPoints, totalReps, repsCompleted, isComplete, checkBox);
+                    goals.Add(checklistGoal);
+                }
             }
         }
 
