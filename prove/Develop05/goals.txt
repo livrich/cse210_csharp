@@ -1,3 +1,4 @@
 SimpleGoal:Paint,Finish painting of bridge,200,False,[ ]
 SimpleGoal:Paint,Finish painting of bridge,200,False,[ ]
 SimpleGoal:Mt.Timp,Climb Mt.Timpinogus,500,True,[X]
+EternalGoal:Make Bed,Make bed every morning,5,False,[ ],3
