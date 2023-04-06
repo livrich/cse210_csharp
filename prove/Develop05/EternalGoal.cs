@@ -8,12 +8,12 @@ public class EternalGoal : Goal
     // Constructor
     public EternalGoal(string type, string name, string description, int points, 
     bool isComplete = false, string checkBox = "[ ]", int repetitions = 0) 
-    : base(type, name, description, points)
+    : base(type, name, description, points, isComplete, checkBox)
     {
         _repetitions = repetitions;
     }
 
-    // Override method to leave complete as false
+    // Override method leaves complete as false
     // Eternal goals are never finished
     public override bool SetComplete()
     {
