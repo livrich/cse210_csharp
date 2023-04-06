@@ -31,6 +31,14 @@ public abstract class Goal
     // Abstract method to return string to display to screen
     public abstract string GetDisplaySummary();
 
+    // Abstract method to count how many times goal
+    // has been completed. (Need for eternal and checklist)
+    public abstract int IncreaseRepetitions();
+
+    // Abstract method to get number of repetitions.
+    // (Need for eternal and checklist)
+    public abstract int GetRepetitions();
+
     // Method to mark box of completed goals
     public string MarkCheckBox()
     {
@@ -53,5 +61,11 @@ public abstract class Goal
     public int GetPoints()
     {
         return _points;
+    }
+
+    // Method to get type of goal
+    public string GetGoalType()
+    {
+        return _type;
     }
 }
