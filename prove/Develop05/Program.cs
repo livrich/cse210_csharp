@@ -24,6 +24,9 @@ class Program
         // Load file when program opens
         LoadFile();
 
+        // Variable to keep track of total points
+        int totalPoints = 0;
+        
         // Variables that will be used to create goals
         string name;
         string description;
@@ -33,6 +36,9 @@ class Program
 
         while (true)
         {
+            totalPoints = 0;
+            CalcTotalPoints();
+            DisplayTotalPoints();
             DisplayMainMenu();
             Console.Write("Select a choice: ");
             string choice = Console.ReadLine();
@@ -160,6 +166,23 @@ class Program
             Console.WriteLine("  1. Simple Goal");
             Console.WriteLine("  2. Eternal Goal");
             Console.WriteLine("  3. Checklist Goal");
+        }
+
+        int CalcTotalPoints()
+        {
+            foreach (Goal g in goals)
+            {
+                if (g.GetCompleted() == true)
+                {
+                    totalPoints += g.GetPoints();
+                }
+            }
+            return totalPoints;
+        }
+
+        void DisplayTotalPoints()
+        {
+            Console.WriteLine($"\nYou have {totalPoints} points.");
         }
 
         void AskQuestions(bool extra)
