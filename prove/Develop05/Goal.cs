@@ -42,7 +42,14 @@ public abstract class Goal
     // Method to mark box of completed goals
     public string MarkCheckBox()
     {
-        return _checkBox = "[X]";
+        if (GetCompleted() == true)
+        {
+            return _checkBox = "[X]";
+        }
+        else
+        {
+            return _checkBox;
+        }
     }
 
     // Method to get name of goal
