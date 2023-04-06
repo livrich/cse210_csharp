@@ -119,7 +119,7 @@ class Program
                         goals[finished].IncreaseRepetitions();
 
                         // Message about earning points
-                        Console.WriteLine($"Congratulations you have earned {goals[finished].GetPoints()} points!");
+                        Console.WriteLine($"Congratulations! You have earned {goals[finished].GetPoints()} points!");
 
                     }
                     else if (goals[finished].GetGoalType() == "ChecklistGoal")
@@ -152,7 +152,7 @@ class Program
                         }
                         
                         // Message about points earned
-                        Console.WriteLine($"Congratulations you have earned {earnedPoints} points!");
+                        Console.WriteLine($"Congratulations! You have earned {earnedPoints} points!");
                     }
                     else // "SimpleGoal"
                     {
@@ -161,7 +161,7 @@ class Program
                         goals[finished].MarkCheckBox();
 
                         // Message about earning points
-                        Console.WriteLine($"Congratulations you have earned {goals[finished].GetPoints()} points!");
+                        Console.WriteLine($"Congratulations! You have earned {goals[finished].GetPoints()} points!");
                     }
                     // Message about current point total
                     totalPoints = 0;
