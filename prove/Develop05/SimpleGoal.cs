@@ -29,4 +29,20 @@ public class SimpleGoal : Goal
     {
         return $"{_checkBox} {_name} ({_description})";
     }
+
+    // Override method that is not needed for this class.
+    // (Simple goal can only be completed once.)
+    // Other two child classes need.
+    public override int IncreaseRepetitions()
+    {
+        return 0;
+    }
+
+    // Override method that is not needed for this class.
+    // (Simple goal can only be completed once.)
+    // Other two child classes need.
+    public override int GetRepetitions()
+    {
+        return 0;
+    }
 }
