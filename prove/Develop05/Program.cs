@@ -9,17 +9,6 @@ class Program
         // List of goals as strings
         List<string> stringGoals = new List<string>();
 
-        // Testing simple goal
-        // SimpleGoal sg = new SimpleGoal("SimpleGoal", "Paint", "Finish painting of bridge", 200);
-        // Console.WriteLine(sg.GetDisplaySummary());
-        // Console.WriteLine(sg.GetFileSummary());
-        // goals.Add(sg);
-        // sg.SetComplete();
-        // sg.MarkCheckBox();
-        // Console.WriteLine(sg.GetDisplaySummary());
-        // Console.WriteLine(sg.GetFileSummary());
-        // goals.Add(sg);
-
         // Load file when program opens
         LoadFile();
 
@@ -35,9 +24,11 @@ class Program
 
         while (true)
         {
+            // Reset total before calculating again
             totalPoints = 0;
             CalcTotalPoints();
             DisplayTotalPoints();
+
             DisplayMainMenu();
             Console.Write("Select a choice: ");
             string choice = Console.ReadLine();
@@ -65,22 +56,16 @@ class Program
                     // Create eternal goal
                     else if (goalType == "2") 
                     {
-                        // Ask questions about goal
                         AskQuestions(false);
-                        // Make goal
                         EternalGoal g2 = new EternalGoal("EternalGoal", name, description, points);
-                        // Add goal to list of Goal objects
                         goals.Add(g2);
                         break;
                     } 
                     // Create checklist goal
                     else if (goalType == "3") 
                     {
-                        // Ask questions about goal
                         AskQuestions(true);
-                        // Make goal
                         ChecklistGoal g3 = new ChecklistGoal("ChecklistGoal", name, description, points, bonusPoints, repetitions);
-                        // Add goal to list of Goal objects
                         goals.Add(g3);
                         break;
                     } 
@@ -94,6 +79,7 @@ class Program
             // Display list of goals
             else if (choice == "2")
             {
+                // Variable to display line numbers
                 int lineNum = 1;
                 foreach (Goal g in goals)
                 {
@@ -104,24 +90,30 @@ class Program
             // Record progress/completion of goal
             else if (choice == "3")
             {
+                // Intro message, then display name of goals
                 Console.WriteLine("The goals are:");
-                int lineNum = 1;
+                // Variable to number goals
+                int goalNum = 1;
                 foreach (Goal g in goals)
                 {
-                    Console.WriteLine($"{lineNum}. {g.GetName()}");
-                    lineNum ++;
+                    Console.WriteLine($"{goalNum}. {g.GetName()}");
+                    goalNum ++;
                 }
 
+                // Pick goal that will be recorded
                 Console.Write("Which goal did you accomplish? ");
                 int finished = Int32.Parse(Console.ReadLine());
+                // Code count starts at 0; thus, need to subtract 1.
                 finished -= 1;
 
+                // Check if goal has already been finished
                 if (goals[finished].GetCompleted() == true)
                 {
                     Console.WriteLine("You have already finished that goal.");
                 }
                 else
                 {
+                    // Eternal goals only need repetitions increased. (Never finished)
                     if (goals[finished].GetGoalType() == "EternalGoal")
                     {
                         goals[finished].IncreaseRepetitions();
@@ -129,15 +121,19 @@ class Program
                     else if (goals[finished].GetGoalType() == "ChecklistGoal")
                     {
                         goals[finished].IncreaseRepetitions();
+                        // SetComplete for checklist will determine if goal has
+                        // been completed enough times to have finished entire goal.
                         goals[finished].SetComplete();
+                        // MarkCheckBox checks if goal is finished and returns
+                        // appropriate type of box.
                         goals[finished].MarkCheckBox();
                     }
                     else // "SimpleGoal"
                     {
+                        // SetComplete will always set to true
                         goals[finished].SetComplete();
                         goals[finished].MarkCheckBox();
                     }
-
                     // Message to inform user task was completed
                     Console.WriteLine("Progress has been recorded");
                 }
@@ -147,10 +143,14 @@ class Program
             {
                 foreach (Goal g in goals)
                 {
+                    // Need string version of goals
                     string str = g.GetFileSummary();
+                    // Add string representations to list
                     stringGoals.Add(str);
+                    // SaveFile requires name of file and List<string>
                     SaveFile("goals.txt", stringGoals);
                 }
+                // Message to inform user task was completed
                 Console.WriteLine("File saved successfully.");
             } 
             // Exit program
@@ -166,6 +166,7 @@ class Program
         }
         
 
+        // Function to display main menu options
         void DisplayMainMenu()
         {
             Console.WriteLine("\nMain Menu:");
@@ -176,6 +177,7 @@ class Program
             Console.WriteLine("  5. Quit");
         }
 
+        // Function to display menu of goal types
         void DisplayGoalMenu()
         {
             Console.WriteLine("The types of Goals are:");
@@ -184,21 +186,29 @@ class Program
             Console.WriteLine("  3. Checklist Goal");
         }
 
+        // Function to calculate total points earned
         int CalcTotalPoints()
         {
             foreach (Goal g in goals)
             {
-                // Need to include counting repetitions
-                if (g.GetCompleted() == true)
+                // Count points for completed simple goals
+                if (g.GetGoalType() == "SimpleGoal" && g.GetCompleted() == true)
                 {
                     totalPoints += g.GetPoints();
                 }
+
+                // Count points for eternal and checklist goal reps completed
                 if (g.GetRepetitions() > 0)
                 {
                     totalPoints += g.GetPoints() * g.GetRepetitions();
                 }
+
+                // Count points for checklist goal finish bonus
                 if (g.GetGoalType() == "CheckListGoal" && g.GetCompleted() == true)
                 {
+                    // How I came up with accessing _bonusPoint variable.
+                    // Sine I'm working with List<Goal> I can't access child
+                    // class attributes or methods.
                     string[] pieces = g.GetFileSummary().Split(':', ',');
                     int bonus = Int32.Parse(pieces[4]);
                     totalPoints += bonus;
@@ -207,11 +217,13 @@ class Program
             return totalPoints;
         }
 
+        // Function to display total points
         void DisplayTotalPoints()
         {
             Console.WriteLine($"\nYou have {totalPoints} points.");
         }
 
+        // Function to get user input about goal being created
         void AskQuestions(bool extra)
         {
             // Name of goal
@@ -224,6 +236,7 @@ class Program
             Console.Write("Associated points: ");
             points = Int32.Parse(Console.ReadLine());
 
+            // Only checklist goals will ask these extra questions
             if (extra)
             {
                 // Num repetitions for checklist goal
@@ -248,7 +261,9 @@ class Program
                 string type = parts[0];
                 string data = parts[1];
 
-                // Split goal data into individual parts
+                // Split goal data into individual parts and
+                // turn into appropriate type of goal.
+                // Add Goal objects to goals list.
                 if (type == "SimpleGoal")
                 {
                     string[] pieces = data.Split(',');
