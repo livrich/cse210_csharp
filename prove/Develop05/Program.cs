@@ -24,11 +24,12 @@ class Program
         // Load file when program opens
         LoadFile();
 
-        // string name;
-        // string description;
-        // int points;
-        // int repetitions = 0;
-        // int bonusPoints = 0;
+        // Variables that will be used to create goals
+        string name;
+        string description;
+        int points;
+        int repetitions;
+        int bonusPoints;
 
         while (true)
         {
@@ -39,24 +40,23 @@ class Program
             // Create new goal
             if (choice == "1")
             {
-                // while (true)
-                // {
-                //     DisplayGoalMenu();
-                //     Console.Write("Select goal type (by number): ");
-                //     string goalType = Console.ReadLine();
+                while (true)
+                {
+                    DisplayGoalMenu();
+                    Console.Write("Select goal type (by number): ");
+                    string goalType = Console.ReadLine();
 
-                //     // Create simple goal
-                //     if (goalType == "1") 
-                //     {
-                //         // Ask questions about goal
-                //         AskQuestions(false);
-                //         Make goal
-                //         SimpleGoal g1 = new SimpleGoal(name, description, points);
-                //         // Add goal to list. Need string representation.
-                //         // string stringLine = $"{g1.CheckBox()},SimpleGoal:{name},{description},{points},{g1.GetCompleted()}";
-                //         goals.Add(g1);
-                //         break;
-                //     } 
+                    // Create simple goal
+                    if (goalType == "1") 
+                    {
+                        // Ask questions about goal
+                        AskQuestions(false);
+                        // Make goal
+                        SimpleGoal g1 = new SimpleGoal("SimpleGoal", name, description, points);
+                        // Add goal to list of Goal objects
+                        goals.Add(g1);
+                        break;
+                    } 
                 //     // Create eternal goal
                 //     else if (goalType == "2") 
                 //     {
@@ -81,12 +81,12 @@ class Program
                 //         goals.Add(g3);
                 //         break;
                 //     } 
-                //     // Invalid input error message
-                //     else 
-                //     {
-                //         Console.WriteLine("That was not a valid option.");
-                //     }
-                // }
+                    // Invalid input error message
+                    else 
+                    {
+                        Console.WriteLine("That was not a valid option.");
+                    }
+                }
             } 
             // Display list of goals
             else if (choice == "2")
@@ -154,36 +154,36 @@ class Program
             Console.WriteLine("  5. Quit");
         }
 
-        // void DisplayGoalMenu()
-        // {
-        //     Console.WriteLine("The types of Goals are:");
-        //     Console.WriteLine("  1. Simple Goal");
-        //     Console.WriteLine("  2. Eternal Goal");
-        //     Console.WriteLine("  3. Checklist Goal");
-        // }
+        void DisplayGoalMenu()
+        {
+            Console.WriteLine("The types of Goals are:");
+            Console.WriteLine("  1. Simple Goal");
+            Console.WriteLine("  2. Eternal Goal");
+            Console.WriteLine("  3. Checklist Goal");
+        }
 
-        // void AskQuestions(bool extra)
-        // {
-        //     // Name of goal
-        //     Console.Write("Name your goal: ");
-        //     name = Console.ReadLine();
-        //     // Description of goal
-        //     Console.Write("Short description of goal: ");
-        //     description = Console.ReadLine();
-        //     // Points for completing goal
-        //     Console.Write("Associated points: ");
-        //     points = Int32.Parse(Console.ReadLine());
+        void AskQuestions(bool extra)
+        {
+            // Name of goal
+            Console.Write("Name your goal: ");
+            name = Console.ReadLine();
+            // Description of goal
+            Console.Write("Short description of goal: ");
+            description = Console.ReadLine();
+            // Points for completing goal
+            Console.Write("Associated points: ");
+            points = Int32.Parse(Console.ReadLine());
 
-        //     if (extra)
-        //     {
-        //         // Num repetitions for checklist goal
-        //         Console.Write("Repetitions to be completed for bonus: ");
-        //         repetitions = Int32.Parse(Console.ReadLine());
-        //         // Bonus points for completing checklist goal
-        //         Console.Write("Bonus points for completion: ");
-        //         bonusPoints = Int32.Parse(Console.ReadLine());
-        //     }
-        // }
+            if (extra)
+            {
+                // Num repetitions for checklist goal
+                Console.Write("Repetitions to be completed for bonus: ");
+                repetitions = Int32.Parse(Console.ReadLine());
+                // Bonus points for completing checklist goal
+                Console.Write("Bonus points for completion: ");
+                bonusPoints = Int32.Parse(Console.ReadLine());
+            }
+        }
 
         // Function to load each line of file to list.
         // Each string line will be converted back to Goal object.
