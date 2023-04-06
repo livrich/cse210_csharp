@@ -117,6 +117,10 @@ class Program
                     if (goals[finished].GetGoalType() == "EternalGoal")
                     {
                         goals[finished].IncreaseRepetitions();
+
+                        // Message about earning points
+                        Console.WriteLine($"Congratulations you have earned {goals[finished].GetPoints()} points!");
+
                     }
                     else if (goals[finished].GetGoalType() == "ChecklistGoal")
                     {
@@ -127,15 +131,45 @@ class Program
                         // MarkCheckBox checks if goal is finished and returns
                         // appropriate type of box.
                         goals[finished].MarkCheckBox();
+
+                        // Determining points earned
+                        int earnedPoints = 0;
+                        int repPoints = goals[finished].GetPoints();
+                        // How I came up with accessing _bonusPoint variable.
+                        // Sine I'm working with List<Goal> I can't access child
+                        // class attributes or methods.
+                        string[] pieces = goals[finished].GetFileSummary().Split(':', ',');
+                        int bonus = Int32.Parse(pieces[4]);
+
+                        // Finalizing points earned
+                        if (goals[finished].GetCompleted() == false)
+                        {
+                            earnedPoints += repPoints;
+                        }
+                        else
+                        {
+                            earnedPoints += (repPoints + bonus);
+                        }
+                        
+                        // Message about points earned
+                        Console.WriteLine($"Congratulations you have earned {earnedPoints} points!");
                     }
                     else // "SimpleGoal"
                     {
                         // SetComplete will always set to true
                         goals[finished].SetComplete();
                         goals[finished].MarkCheckBox();
+
+                        // Message about earning points
+                        Console.WriteLine($"Congratulations you have earned {goals[finished].GetPoints()} points!");
                     }
-                    // Message to inform user task was completed
-                    Console.WriteLine("Progress has been recorded");
+                    // Message about current point total
+                    totalPoints = 0;
+                    int currentPoints = CalcTotalPoints();
+                    Console.WriteLine($"You now have {currentPoints} points.");
+
+                    // // Message to inform user task was completed (No longer used)
+                    // Console.WriteLine("Progress has been recorded");
                 }
             } 
             // Save file
