@@ -45,6 +45,18 @@ public abstract class Goal
         return _name;
     }
 
+    // Method to get status of completion
+    public bool GetCompleted()
+    {
+        return _isComplete;
+    }
+
+    // Method to get points
+    public int GetPoints()
+    {
+        return _points;
+    }
+
     
 
     // // Methods
